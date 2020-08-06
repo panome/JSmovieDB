@@ -4,10 +4,10 @@
 
 2) Изменить жанр фильма, поменять "комедия" на "драма"+
 
-3) Изменить задний фон постера с фильмом на изображение "bg.jpg". Оно лежит в папке img.
+3) Изменить задний фон постера с фильмом на изображение "bg.jpg". Оно лежит в папке img.+
 Реализовать только при помощи JS
 
-4) Список фильмов на странице сформировать на основании данных из этого JS файла.
+4) Список фильмов на странице сформировать на основании данных из этого JS файла.+
 Отсортировать их по алфавиту 
 
 5) Добавить нумерацию выведенных фильмов */
@@ -27,7 +27,8 @@ const movieDB = {
 const   adv = document.querySelector('.promo__adv'),
         advImg = adv.querySelectorAll('img'),
         background = document.querySelector('.promo__bg'),
-        genre = document.querySelector('.promo__genre')
+        genre = document.querySelector('.promo__genre'),
+        movieList = document.querySelector('.promo__interactive-list')
 
 const deleteAdv = (selector) => {
     selector.forEach(item => {
@@ -45,3 +46,15 @@ const changeBackground = (selector) => {
     selector.style.backgroundImage = 'url(./img/bg.jpg)'
 }
 changeBackground(background)
+
+const addMovieFromDB = (selector) => {
+    movieDB.movies.sort()
+    movieDB.movies.forEach((item, i) => {
+        selector.innerHTML += `
+            <li class="promo__interactive-item">${i + 1} ${item}
+                <div class="delete"></div>
+            </li>
+        `
+    })
+}
+addMovieFromDB(movieList)
