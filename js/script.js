@@ -25,12 +25,17 @@ const movieDB = {
 };
 
 const   adv = document.querySelector('.promo__adv'),
-        advImg = adv.querySelectorAll('img')
+        advImg = adv.querySelectorAll('img'),
+        genre = document.querySelector('.promo__genre')
 
 const deleteAdv = (selector) => {
     selector.forEach(item => {
         item.remove()
     })
 }
-
 deleteAdv(advImg)
+
+const changeGenre = (selector) => {
+    selector.innerHTML = 'drama'
+}
+changeGenre(genre)
