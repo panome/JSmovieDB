@@ -24,3 +24,13 @@ const movieDB = {
     ]
 };
 
+const   adv = document.querySelector('.promo__adv'),
+        advImg = adv.querySelectorAll('img')
+
+const deleteAdv = (selector) => {
+    selector.forEach(item => {
+        item.remove()
+    })
+}
+
+deleteAdv(advImg)
