@@ -1,19 +1,6 @@
 /* Задания на урок:
-
-1) Реализовать функционал, что после заполнения формы и нажатия кнопки "Подтвердить" - 
-новый фильм добавляется в список. Страница не должна перезагружаться.
-Новый фильм должен добавляться в movieDB.movies.
-Для получения доступа к значению input - обращаемся к нему как input.value;
-P.S. Здесь есть несколько вариантов решения задачи, принимается любой, но рабочий.
-
-2) Если название фильма больше, чем 21 символ - обрезать его и добавить три точки
-
 3) При клике на мусорную корзину - элемент будет удаляться из списка (сложно)
-
-4) Если в форме стоит галочка "Сделать любимым" - в консоль вывести сообщение: 
-"Добавляем любимый фильм"
-
-5) Фильмы должны быть отсортированы по алфавиту */
+ */
 
 'use strict';
 
@@ -68,12 +55,21 @@ addMovieFromDB(movieList)
 
 const addMovieFromForm = () => {
     btn.addEventListener('click', (e) => {
+        let movieName = formInput.value,
+            favorite = checkbox.checked
+
         e.preventDefault()
 
-        movieDB.movies.push(formInput.value)
-        if(checkbox.checked) {
-            console.log(`Pridal jste ${formInput.value} do oblibeneho!`)
+        if (movieName.length > 21) {
+            movieName = movieName.substring(0, 22) + '...'
         }
+
+        movieDB.movies.push(movieName)
+
+        if(favorite) {
+            console.log(`Pridal jste ${movieName} do oblibeneho!`)
+        }
+
         movieList.innerHTML = ''
         addMovieFromDB(movieList)
         form.reset()
