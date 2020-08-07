@@ -1,7 +1,3 @@
-/* Задания на урок:
-3) При клике на мусорную корзину - элемент будет удаляться из списка (сложно)
- */
-
 'use strict';
 
 const movieDB = {
@@ -49,6 +45,16 @@ const addMovieFromDB = (selector) => {
                 <div class="delete"></div>
             </li>
         `
+    })
+    const removeMovie = document.querySelectorAll('.delete')
+    
+    removeMovie.forEach((item, i) => {
+        item.addEventListener('click', () => {
+            item.parentElement.remove()
+            movieDB.movies.splice(i, 1)
+            movieList.innerHTML = ''
+            addMovieFromDB(movieList)
+        })
     })
 }
 addMovieFromDB(movieList)
