@@ -25,17 +25,17 @@ const deleteAdv = (selector) => {
         item.remove()
     })
 }
-deleteAdv(advImg)
+
 
 const changeGenre = (selector) => {
     selector.innerHTML = 'drama'
 }
-changeGenre(genre)
+
 
 const changeBackground = (selector) => {
     selector.style.backgroundImage = 'url(./img/bg.jpg)'
 }
-changeBackground(background)
+
 
 const addMovieFromDB = (selector) => {
     movieDB.movies.sort()
@@ -52,12 +52,12 @@ const addMovieFromDB = (selector) => {
         item.addEventListener('click', () => {
             item.parentElement.remove()
             movieDB.movies.splice(i, 1)
-            movieList.innerHTML = ''
-            addMovieFromDB(movieList)
+            selector.innerHTML = ''
+            addMovieFromDB(selector)
         })
     })
 }
-addMovieFromDB(movieList)
+
 
 const addMovieFromForm = () => {
     btn.addEventListener('click', (e) => {
@@ -81,4 +81,10 @@ const addMovieFromForm = () => {
         form.reset()
     })
 }
+
+
+deleteAdv(advImg)
+changeGenre(genre)
+changeBackground(background)
+addMovieFromDB(movieList)
 addMovieFromForm()
